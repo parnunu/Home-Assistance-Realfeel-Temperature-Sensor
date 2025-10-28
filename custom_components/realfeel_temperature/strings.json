@@ -1,0 +1,39 @@
+{
+  "title": "RealFeel Temperature",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Configure RealFeel Temperature",
+        "description": "Select data sources or fallbacks for the apparent temperature calculation.",
+        "data": {
+          "name": "Name",
+          "temperature_entity": "Temperature entity",
+          "temperature_fallback": "Fallback temperature (°C)",
+          "humidity_entity": "Humidity entity",
+          "humidity_fallback": "Fallback humidity (%)",
+          "wind_entity": "Wind speed entity",
+          "wind_fallback": "Fallback wind speed",
+          "wind_unit": "Wind speed unit"
+        }
+      }
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Update RealFeel Temperature",
+        "description": "Adjust entities or fallback values.",
+        "data": {
+          "name": "Name",
+          "temperature_entity": "Temperature entity",
+          "temperature_fallback": "Fallback temperature (°C)",
+          "humidity_entity": "Humidity entity",
+          "humidity_fallback": "Fallback humidity (%)",
+          "wind_entity": "Wind speed entity",
+          "wind_fallback": "Fallback wind speed",
+          "wind_unit": "Wind speed unit"
+        }
+      }
+    }
+  }
+}
