@@ -1,0 +1,6 @@
+{
+  "name": "RealFeel Temperature",
+  "content_in_root": false,
+  "domains": ["realfeel_temperature"],
+  "render_readme": true
+}
