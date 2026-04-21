@@ -1,0 +1,55 @@
+name: Publish Add-on to Central Repo
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/publish-addon-to-central.yml"
+      - "addon/**"
+      - "custom_components/realfeel_temperature/**"
+      - "LICENSE"
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source repo
+        uses: actions/checkout@v5
+
+      - name: Checkout central repo
+        uses: actions/checkout@v5
+        with:
+          repository: parnunu/home-assistant-addons
+          token: ${{ secrets.CENTRAL_REPO_PAT }}
+          path: central
+
+      - name: Sync published folder
+        run: |
+          set -euo pipefail
+
+          target="central/realfeel_temperature"
+          rm -rf "${target}"
+          mkdir -p "${target}"
+
+          cp addon/CHANGELOG.md addon/config.yaml addon/DOCS.md addon/Dockerfile addon/README.md addon/run.sh LICENSE "${target}/"
+
+      - name: Commit and push changes
+        run: |
+          set -euo pipefail
+
+          cd central
+          if git diff --quiet -- realfeel_temperature; then
+            echo "No central repo changes to publish."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add realfeel_temperature
+          git commit -m "chore(publish): sync realfeel_temperature from parnunu/Home-Assistance-Realfeel-Temperature-Sensor@${GITHUB_SHA}"
+          git push origin main
