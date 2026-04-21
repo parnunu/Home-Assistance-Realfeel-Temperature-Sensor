@@ -15,7 +15,7 @@ A custom Home Assistant integration that calculates an apparent temperature sens
 ### Install with HACS (recommended)
 
 1. Open HACS in Home Assistant and choose **Integrations → Custom repositories**.
-2. Add `https://github.com/openai/Home-Assistance-Realfeel-Temperature-Sensor` as an **Integration** repository.
+2. Add `https://github.com/parnunu/Home-Assistance-Realfeel-Temperature-Sensor` as an **Integration** repository.
 3. Locate **RealFeel Temperature** in the Integrations list and select **Download**.
 4. When HACS prompts for a version, pick the latest semantic release (for example `v1.1.0`). Versions now follow `MAJOR.MINOR.PATCH` numbering so they are easy to read in the HACS UI.
 5. After the download completes, restart Home Assistant to load the integration.
@@ -25,6 +25,10 @@ A custom Home Assistant integration that calculates an apparent temperature sens
 1. Download the latest release archive from GitHub and extract it locally.
 2. Copy the `custom_components/realfeel_temperature` folder into the `custom_components` directory of your Home Assistant configuration.
 3. Restart Home Assistant.
+
+### Install through the central add-on repository
+
+If you want to keep `https://github.com/parnunu/home-assistant-addons` as your single Home Assistant repository URL, install the **RealFeel Temperature** compatibility add-on from that central repo. It copies this integration into `/config/custom_components/realfeel_temperature`, after which you restart Home Assistant and add the integration normally from **Settings -> Devices & Services**.
 
 ## Versioning
 
